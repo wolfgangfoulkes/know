@@ -1,0 +1,153 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "pre/meyer-reset-mod.css.scss";
+@import "pre/utilities.css.scss";
+
+/* ----- VARS ----- */
+
+/* --- COLORS --- */
+$salmender: w_bl(rgb(100, 0, 0), 0.1);
+/* --- */
+
+/* --- ICONS --- */
+$nav-icon-size: 40px;
+/* --- */
+
+/* --- LAYOUT --- */
+$margins-rl: 48px;
+$vmn: 48px;
+$nav-bar-h: 80px; 	/* formerly 96, then 72. */
+					/* 72 might be the best choice */
+					/* with smallest icon 27.5 */
+					/* codepen's is 64 */
+$max-width: 960px;
+/* --- */
+
+/* --- BPS --- */
+$bps: 
+(
+	340px,
+	480px,
+	800px,
+	1024px
+);
+@function _bps($i_) {
+	@return nth($bps, $i_);
+}
+/* --- */
+
+/* --- RESPONSIVE SIZES --- */
+/*
+	- sizes_b * sizes_r -> size_at -> sizes(bp)
+  	used in h's primarily,
+  	but elsewhere
+*/
+$sizes_b: 
+(
+	30px,
+	32px,
+	36px,
+	40px
+);
+@function _sizes_b($i_) {
+	@return nth($sizes_b, $i_);
+}
+
+$sizes_r: (
+	1,
+	.756,
+	.571,
+	.465,
+	.378
+);
+@function _sizes_r($i_) {
+	@return nth($sizes_r, $i_);
+}
+
+@function size_at($i_, $bp_) {
+	@return _sizes_r($i_) * _sizes_b($bp_);
+}
+/*
+	should be "font-sizes"
+*/
+@mixin sizes($i_, $p_) {
+	@include mq(0, _bps(1)) {
+		#{$p_}: size_at($i_, 1);
+	}
+
+	@include mq(_bps(1), _bps(2)) {
+		#{$p_}: size_at($i_, 2);
+	}
+	@include mq(_bps(2), _bps(3)) {
+		#{$p_}: size_at($i_, 3);
+	}
+	@include mq(_bps(3), _bps(4)) {
+		#{$p_}: size_at($i_, 4);
+	}
+
+	@include mq(_bps(4), 0) {
+		#{$p_}: size_at($i_, 4);
+	}
+}
+
+@mixin scale_down($max_, $p_) {
+	@include mq(0, _bps(1)) {
+		#{$p_}: sizes_r(1) * $max_;
+	}
+
+	@include mq(_bps(1), _bps(2)) {
+		#{$p_}: sizes_r(2) * $max_;
+	}
+	@include mq(_bps(2), _bps(3)) {
+		#{$p_}: sizes_r(3) * $max_;
+	}
+	@include mq(_bps(3), _bps(4)) {
+		#{$p_}: sizes_r(4) * $max_;
+	}
+
+	@include mq(_bps(4), 0) {
+		#{$p_}: sizes_r(4) * $max_;
+	}
+}
+
+@mixin scale_up($min_, $p_) {
+	@include mq(0, _bps(1)) {
+		#{$p_}: ( 1.0/sizes_r(1) ) * $max_;
+	}
+
+	@include mq(_bps(1), _bps(2)) {
+		#{$p_}: ( 1.0/sizes_r(2) ) * $max_;
+	}
+	@include mq(_bps(2), _bps(3)) {
+		#{$p_}: ( 1.0/sizes_r(3) ) * $max_;
+	}
+	@include mq(_bps(3), _bps(4)) {
+		#{$p_}: ( 1.0/sizes_r(4) ) * $max_;
+	}
+
+	@include mq(_bps(4), 0) {
+		#{$p_}: ( 1.0/sizes_r(4) ) * $max_;
+	}
+}
+/* --- */
+/* ----- */
+
+/***** dependent files *****/
+
+@import "toplevel.css.scss";
+
+@import "typography.css.scss";
+@import "nav.css.scss";
+@import "events-form.css.scss";
+
+@import "comments-feed.css.scss";
+@import "feed.css.scss";
+@import "show.css.scss";
+@import "dynamic.css.scss";
+@import "calendar.css.scss";
+/***** ALWAYS LAST, for tweaks, hacks and overrides *****/
+/*** ...might need a folder... ***/
+@import "shame.css.scss";
+/*****/

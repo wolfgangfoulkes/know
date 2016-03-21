@@ -1,0 +1,296 @@
+/* 
+don't "round" colors for no reason
+we are recording the colors so we can identify common themes and riff on them
+not reduce variations on a shade
+
+though if a color is really irrelevant, don't record it, just make a var based on the property for now.
+
+a function for sustaining color with changing opacity might be cool
+*/
+
+/* faded crimson, or crimson-orange, originally transparent */
+$crimsange: w_bl(rgb(100, 0, 0), 0.5);
+$trcrimsange: rgba(100, 0, 0, 0.5);
+
+$softlitegrey: w_bl(rgb(25, 0, 0), 0.1);
+$trsoftlitegrey: rgba(25, 0, 0, 0.1);
+
+/*
+?temp? colors (for shame?)
+*/
+$trcrimsrown: rgba(60, 0, 0, 0.6);
+/*
+*/
+
+.hidden 
+{
+	display: none !important;
+}
+
+/* could be function or mixin or loop or something */
+svg[data-svgr="0"] {
+	transform: rotate(0deg);
+}
+svg[data-svgr="90"] {
+	transform: rotate(90deg);
+}
+svg[data-svgr="180"] {
+	transform: rotate(180deg);
+}
+svg[data-svgr="270"] {
+	transform: rotate(270deg);
+}
+
+/* ----- NAV ----- */
+.nav-bar {
+	>[data-current="true"] {
+		color: $trcrimsange;
+		
+		&.svg-link svg {
+			fill: $trcrimsange;
+		}
+	}
+}
+
+/* ----- COMMENTS LIST ----- */
+/* 
+--- COLOR CODING
+*/
+.comment-list.col .item {
+	&[data-fresh=true] {
+
+	}
+	&[data-fresh=false] {
+		color: rgba(25, 0, 0, 0.3);
+	}
+
+	&[data-role="default"] {
+		.options {
+			border-bottom: 2px solid rgba(150, 100, 100, 0.05);
+			color: rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	&[data-owner=true][data-role="default"] {
+	}
+
+	&[data-public=false][data-owner=true] {
+		 color: rgba(200, 100, 100, 0.5);
+		 .options {
+		 	border-bottom: 2px solid rgba(180, 100, 100, 0.2);
+			color: rgba(200, 100, 100, 0.7);
+
+		}
+	}
+}
+
+/* 
+--- SEL TABS
+*/
+[data-sel="rcv"] {
+	width: 100%;
+
+	&[data-sel-state='false'] {
+		display: none;
+	}
+}
+
+.tabs {
+	width: 100%;
+	justify-content: center;
+	> * {
+		padding: 8px 13px;
+	}
+}
+
+.tabs >[data-sel="snd"] {
+	&[data-sel-state='true'] {
+		color: $trcrimsrown;
+		background-color: $trsoftlitegrey;
+		font-weight: normal;
+	}
+	&[data-sel-state='false'] {
+		color: $trsoftlitegrey;
+		border-right: 1px solid $trsoftlitegrey;
+		font-weight: lighter;
+	}
+}
+
+
+
+/* 
+--- PAGINATOR
+*/
+$pagi-nav-to-page-w: 50%;
+.h5[data-pagi-link]
+{
+	width: 100%;
+	.pagination
+	{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: $pagi-nav-to-page-w;
+		margin: 0 auto;
+
+		> *
+		{
+		}
+
+		.first, 
+		.last
+		{
+			display: none;
+		}
+
+		.prev, 
+		.next {
+		}
+
+		.page.current
+		{
+			color: $trcrimsange;
+		}
+	}
+
+	&[data-first="true"] .prev, 
+	&[data-last="true"] .next
+	{
+		opacity: 0.25;
+	}
+}
+/* ---------- */
+
+/* ----- ACTIVITY-LIST ----- */
+.activity-list.col .item
+{
+	&[data-fresh=true] {
+
+	}
+	&[data-fresh=false] {
+		opacity: 0.6;
+	}
+}
+
+.activity-feed > .item[data-drop="snd"] {
+	.svg-link {
+		box-sizing: border-box;
+	}
+	
+	&[data-drop-state="false"] {
+		.svg-link
+		{
+			border: 3px solid rgba(100, 0, 0, 0.0);
+			background: $trcrimsange;
+			transform: rotate(180deg);
+			svg[data-svgid="arrow_3"]
+			{
+				top: -3px;
+				width: 14px;
+				height: 14px;
+			}
+			svg[data-svgid="arrow_4"]
+			{
+				width: 20px;
+				height: 20px;
+			}
+			svg
+			{
+				fill: white;
+				position: relative;
+			}
+		}
+		
+	}
+	&[data-drop-state="true"] {
+		.svg-link
+		{
+			border: 3px solid $trcrimsange;
+			background: none;
+			transform: rotate(0deg);
+			position: relative;
+			svg[data-svgid="arrow_3"]
+			{
+				width: 15px;
+				height: 15px;
+			}
+			svg[data-svgid="arrow_4"]
+			{
+				width: 20px;
+				height: 20px;
+			}
+			svg
+			{
+				position: relative;
+			}
+		}
+	}
+}
+
+/* same as toggle=true above */
+.activity-feed .item[data-detail="true"]
+{
+	.svg-link 
+	{
+		border: 3px solid $trcrimsange;
+		background: none;
+	}
+
+	.svg-link svg[data-svgid="letterx"]
+	{
+		width: 15px;
+		height: 15px;
+	}
+
+
+	.svg-link svg[data-svgid="arrow_3"]
+	{
+		/*transform: rotate(270deg);*/
+		width: 15px;
+		height: 15px;
+	}
+}
+
+
+.activity-feed .activity-list[data-drop="rcv"] {
+	&[data-drop-state="false"]
+	{
+		display: none;
+	}
+}
+
+/* UNUSED FUN STYLE FOR EYE SVG */
+/*
+.svg-link #svg-eye_1 {
+	position: relative;
+	fill: $trcrimsange;
+	
+	&[data-drop-state="false"] 
+	{
+		transform: rotate(180deg);
+	}
+	&[data-drop-state="true"] 
+	{
+		transform: rotate(0);
+	}
+}
+*/
+/* ---------- */
+
+/* ----- INFINITE SCROLL ----- */
+[data-scroll-link="1"]
+{
+}
+[data-scroll-link="0"], [data-scroll-link="2"]
+{
+	display: none;
+}
+
+[data-scroll-link].loading
+{
+	> a 
+	{
+		color: rgba(30, 0, 0, 0.5);
+	}
+}
+/* ---------- */

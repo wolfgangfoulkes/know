@@ -1,0 +1,250 @@
+
+
+/* ----- colors for filler ----- */
+.events.feed .image-temp 
+{
+	background-color: rgba(100, 0, 50, 0.8);
+}
+
+.show.head.col > .img-main {
+	background-color: red;
+}
+
+/* ----- */
+
+
+/* ----- TEMP TYPOGRAPHY ----- */
+	.h1, .h2 
+	{
+		font-weight: bold;
+	}
+
+	.tags 
+	{
+		color: rgba(100, 0, 0, 0.3);
+	}
+
+	html {
+		font-family: 'Helvetica', sans-serif;
+	}
+
+	.events.feed .h2 
+	{
+		/*font-variant: small-caps; do this in Ruby. sizes are still diff otherwise*/
+		/*font-family: 'Avenir Next';*/
+		font-family: 'Helvetica';
+	}
+
+	.events.feed .dt 
+	{
+		/*font-family: 'Avenir Next Condensed';*/
+		font-family: 'Avenir Next'; 
+		font-weight: initial;
+	}
+
+	.events.feed .username 
+	{
+		font-family: "Avenir Next";
+		font-weight: lighter;
+	}
+
+	.events.feed .title 
+	{
+	}
+
+
+	.activity-feed.feed .h5 {
+		font-weight: lighter;
+	}
+
+	/* - 2Tab - */
+	.tabs {
+		* {
+			font-family: 'Avenir Next', sans-serif;
+			/*font-family: 'PT Sans', sans-serif;*/
+			font-weight: normal;
+			/*font-weight: bolder;*/
+			/*font-weight: lighter;*/
+		}
+	}
+
+	/* - COMMENTS - */
+	.comment-list.col {
+		font-family: 'PT Sans', sans-serif;
+	}
+
+	/* - CALENDAR - */
+	#calendar {
+		font-family: "Avenir Next Condensed", sans-serif;
+	}
+
+	#calendar-title {
+		font-family: "Avenir Next", sans-serif;
+		font-weight: normal;
+	}
+
+	/* - SHOW - */
+	/*
+		these are close to finished
+	*/
+	.show.head.col > .field.date {
+		font-family: 'Avenir Next';
+		/*font-family 'Avenir Next Condensed';*/
+
+		* {
+			font-weight: 100;
+			letter-spacing: -1px;
+			word-spacing: +1px;
+		}
+	}
+
+	.show.head.col > .field.title {
+		/*font-variant: small-caps; do this in Ruby. sizes are still diff otherwise*/
+		font-family: 'Avenir Next';
+
+		/*font-family 'PT Sans';*/
+
+		/* the following prevents line wrapping: */
+		/* white-space: nowrap; */
+	}
+
+	.show.head.col > .field.user {
+		font-family: 'Avenir Next';
+	}
+
+	.show.head.col > .field.tags {
+		font-family: 'Helvetica';
+		font-weight: bold;
+	}
+
+	.description {
+		font-family: 'Helvetica';
+		font-weight: 100;
+	}
+	/* --- */
+
+
+	/* - ACTIVITY-LIST FONTS - */
+	.activity-list {
+		>.item .title {
+			font-family: "Helvetica", sans-serif;
+		}
+
+		>.item[data-fresh="false"] {
+			opacity: 0.5;
+
+		}
+		>.item[data-fresh="true"] {
+			opacity: 1.0;
+			/*margin-left: 2%;*/
+			&:before
+			{
+				display: inline-block;
+				/*content: ". . . !";*/
+				content: "!";
+				font-size: 0.8em;
+/*				margin-right: 3%;*/
+				margin-right: 1.0em;
+/*				margin-left: 8%;*/
+				/*margin-left: 2.3em;*/
+				margin-left: 1.5em;
+			}
+		}
+	}
+
+	.activity-list .dt 
+	{
+		> .d 
+		{
+			font-family: "Avenir Next Condensed", "sans-serif";
+			font-size: 0.8em;
+
+			> date
+			{
+				color: rgba(100, 0, 0, 0.8);
+				font-weight: normal;
+
+				&:nth-of-type(1) {
+				}
+				&:nth-of-type(2) {
+				}
+				&:nth-of-type(3) {
+				}
+			}
+			> b 
+			{
+				color: rgba(100, 0, 0, 0.3);
+
+				&:nth-of-type(1) {
+					
+				}
+				&:nth-of-type(2) {
+				}
+
+			}
+		}
+		> .t
+		{
+			font-family: "Avenir Next", "sans-serif";
+			font-size: 1em;
+			margin-left: 1em;
+
+			> date
+			{
+				color: rgba(0, 0, 0, 1.0);
+				font-weight: normal;
+
+				&:nth-of-type(1) {
+				}
+				&:nth-of-type(2) {
+				}
+			}
+			> b 
+			{
+				margin: 0 1px;
+				color: rgba(100, 0, 0, 0.2);
+
+				&:nth-of-type(1) {
+				}
+
+			}
+
+		}
+		> b
+		{
+			margin: 0 2px;
+
+			&:nth-of-type(1) {
+			}
+		}
+	}
+
+/* ----- */
+
+/* remove this when sizes are fixed */
+$namespace: "know";
+.#{$namespace} {
+	font-size: 36px;
+}
+
+/* ----- MISC ----- */
+/* 
+*	- used only in nav currently, could be reused
+*/
+.svg-link {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	svg {
+		height: 100%;
+		&.svg-plus {
+			height: 85%;
+		}
+		&.svg-user {
+			height: 98%;
+		}
+	}
+}
+/* ----- */
+
+

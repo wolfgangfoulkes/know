@@ -1,0 +1,66 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+one:
+  root: one (Event)
+  commentable: one (Event)
+  user_id: 2
+  role: "default"
+  public: true
+  title: "why we've changed location?"
+  comment: "why?"
+  created_at: <%= DateTime.now.advance(:days => -1) %>
+
+two:
+  root: one (Event)
+  commentable: one (Event)
+  user_id: 2
+  role: "owner"
+  public: true
+  title: "why alteration in room-order?"
+  comment: "why?"
+  created_at: <%= DateTime.now.advance(:days => -1) %>
+
+three:
+  root: one (Event)
+  commentable: one (Event)
+  user_id: 2
+  role: "owner"
+  public: true
+  title: "this is offensive!"
+  comment: "remove this immediately!"
+  created_at: <%= DateTime.now.advance(:minutes => -1) %>
+
+four:
+  root: three (Event)
+  commentable: three (Event)
+  user_id: 1
+  role: "default"
+  public: true
+  title: "this is immoral!"
+  comment: "remove this immediately!"
+  created_at: <%= DateTime.now.advance(:minutes => -2) %>
+
+five:
+  root: three (Event)
+  commentable: three (Event)
+  user_id: 1
+  role: "default"
+  public: false
+  title: "why another one?"
+  comment: "why?"
+  created_at: <%= DateTime.now.advance(:minutes => -3) %>
+
+six:
+  root: three (Event)
+  commentable: three (Event)
+  user_id: 2
+  role: "default"
+  public: false
+  title: "why more?"
+  comment: "why?"
+  created_at: <%= DateTime.now.advance(:minutes => -4) %>

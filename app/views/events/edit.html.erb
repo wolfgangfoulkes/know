@@ -1,0 +1,9 @@
+<section>
+	<%= render 'form' %>
+	<br>
+	<span class="options">
+		<%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' }, class: "item" %> 
+		|
+		<%= link_to 'Back', @event %>
+	</span>
+</section>

@@ -1,0 +1,157 @@
+@mixin show_head($i_right, $i_top, $i_size) {
+	position: relative;
+
+
+	> .img-main 
+	{ 
+		right: $i_right;
+		top: $i_top;
+		width: $i_size;
+		height: $i_size;
+	}
+
+	>.field {
+		box-sizing: border-box;
+	}
+
+	>.field.date {
+		width: 100%;
+	}
+
+	>.field.title {
+		width: 100%;
+		padding-right: $i_size;
+	}
+
+	>.field.user {
+		margin-top: 0px;
+	}
+
+	>.field.tags {
+		width: 50%;
+		text-indent: 20%;
+		text-align: right;
+	}		
+}
+
+/***
+	page
+	{
+		.show.head
+		{
+			img-main
+			field
+			field
+			field
+			field
+		}
+		.description
+
+		(.comments)
+	}
+***/
+
+.description {
+	margin-top: 1.5em;
+
+	width: 100%;
+}
+
+/*****
+* 	unrelated to layout, a few temporary
+*/
+
+
+.show.head.col > .img-main {
+
+	border-radius: 50%;
+	object-fit: cover;
+	opacity: 0.8;
+}
+/*
+*****/
+
+/***** HEAD  *****/
+.show.head.col {
+		border-bottom: 1px solid rgba(100, 0, 0, 0.1);
+
+		position: relative;
+		width: 100%;
+		
+
+		> .img-main { 
+			position: absolute;
+			z-index: -1;
+
+			/*
+				"top" of image is relative to the size of 
+				everything else in show.head
+				so, this size is determined inevitably
+				by the font and line spacing
+			*/
+			@include mq( 0, _bps(2)) {
+				right: 0;
+				top: 20%;
+				width: 190px;
+				height: 190px;
+			}
+
+			@include mq( _bps(2), _bps(3)) {
+				right: 0;
+				top: 20%;
+				width: 200px;
+				height: 200px;
+			}
+
+			@include mq( _bps(3), _bps(4)) {
+				right: 100px;
+				top: 15%;
+				width: 250px;
+				height: 250px;
+			}
+
+			@include mq( _bps(4), 0) {
+				right: 100px;
+				top: 15%;
+				width: 300px;
+				height: 300px;
+			}
+		}
+		
+		>.field {
+		}
+
+		>.field.date {
+			width: 100%;
+		}
+
+		>.field.title {
+			width: 60%;		
+		}
+
+		>.field.user {
+			margin-top: 0px;
+		}
+
+		>.field.tags {
+			/*box-sizing: border-box;
+			padding-left: 8px;*/
+			margin-right: auto;
+			margin-top: auto;
+
+			width: 50%;
+			text-indent: 20%;
+			text-align: right;
+		}		
+}
+
+
+/*-webkit-clip-path: circle($width * .75 at center);*/
+
+
+/*** 
+	could possibly make the abs-pos container flex,
+	then center image inside that
+	or even use abs or rel in that container.
+***/
+

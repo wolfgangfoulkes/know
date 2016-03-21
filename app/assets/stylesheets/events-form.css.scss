@@ -1,0 +1,107 @@
+/***** NEW EVENT *****/
+
+$ef-wmax: 860px;
+form[data-form-for="event"] {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 16px 24px;
+	border: 1px solid black;
+	max-width: $ef-wmax;
+}
+
+form[data-form-for="event"] .field {
+	flex-grow: 1;
+	margin: 8px 0;
+
+}
+
+form[data-form-for="event"] {
+	input, textarea {
+		/***** overrides *****/
+		padding: 0 0;
+		margin: 0 0;
+		width: 100%;
+		/*****/
+	}
+
+	.actions input {
+		/***** overrides *****/
+		background: none;
+		border: none;
+		height: 100%;
+		/*****/
+	}
+}
+form[data-form-for="event"] {
+	input, textarea {
+		box-sizing: border-box;
+		border: 1px solid rgba(100, 0, 0, 0.08);
+	}
+
+	[id *= "tag_list"] {
+		padding: 0.1em 0;
+	}
+
+	label {
+		color: darkgrey;
+	}
+}
+
+form[data-form-for="event"] .actions {
+	flex-grow: 1;
+	margin: 16px 0;
+}
+
+form[data-form-for="event"] .actions input {
+	background-color: rgba(100, 0, 0, 0.1);
+	padding: 8px 0;
+}
+
+
+form[data-form-for="event"] .field.dt {
+
+	width: 100%;
+	display: inline-flex;
+	align-items: baseline;
+	justify-content: space-between;
+
+	> label {
+		margin-right: auto;
+	}
+
+	> select {
+		appearance: none;
+		padding: 8px;
+		margin: 5px;
+		border: 1px solid rgba(100, 0, 0, 0.08);
+		background: none;
+	}
+
+	*[id *= "at_3i"] {
+		margin-right: 10px;
+	}
+	*[id *= "at_4i"] {
+		margin-left: 10px;
+	}
+
+	@include mq(0, _bps(2)) 
+	{
+		> label 
+		{
+			display: none;
+		}
+
+		> select 
+		{
+			appearance: none;
+			padding: 8px;
+			margin: 5px 0;
+			border: 1px solid rgba(100, 0, 0, 0.08);
+			background: none;
+		}
+	}
+}
+
+
+/*****/

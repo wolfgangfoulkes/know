@@ -1,0 +1,81 @@
+<div id="bar-b" class="nav-bar row h2">
+	<%= link_to "Calendar", url_for(
+	    	:controller => 'schedule', 
+	    	:action => 'calendar', 
+	    	:date => @event.starts_at
+    	),
+    class: "item" %> |
+<% if (can? :edit, @event) %>
+	<%= link_to 'Edit', edit_event_path(@event), class: "item" %>
+<% else %>
+	<div class="item">
+		<%= render partial: "socializations/follow_button", locals: {socializable: @event} %>
+	</div>
+<% end %>
+</div>
+	
+<div class="show head col">
+	<div class="img-main"></div>
+
+	<div class="field date">
+	  <span class="h3"> 
+	  	<%= @event.starts_at.to_formatted_s(:short) %> 
+	  </span>
+	  <span class="h2"> 
+	  	- 
+	  </span> 
+	  <span class="h3"> 
+	  	<%= @event.ends_at.to_formatted_s(:short) %> 
+	  </span>
+	</div>
+
+	<div class="field title h1"> 
+		<%= @event.name %> 
+	</div>
+
+	<div class="field user h5"> 
+		<% if @event.user_id == 585858 %>
+			<%= link_to "DaringDanza", "#" %>
+		<% else %>
+	  		<%= link_to @event.user.name, @event.user %> 
+	  	<% end %>
+	</div>
+
+	<div class="field tags h3"> 
+        <%= @event.tag_list %>
+    </div>
+</div>
+
+<div class="description h3">
+   <%= @event.description %>
+</div>
+
+<div class="vmn"> </div>
+
+<section>
+	<div class="row tabs">
+		<%= content_tag :a, class: ["h2"], data: 
+			sel_snd(0, group: 0, state: true) do %>
+		Updates 
+		<% end %>
+		<%= content_tag :a, class: ["h2"], data:
+			sel_snd(1, group: 0, state: false) do %>
+		Questions 
+		<% end %>
+	</div>
+
+	<%= content_tag :div,
+	class: ["col"],
+	data: sel_rcv(0, group: 0, state: true) do
+	%>
+		<%= render partial: 'comments/feed', locals: {comments: @event.owner_comments} %>
+	<% end %>
+
+	<%= content_tag :div,
+	class: ["col"], 
+	data: sel_rcv(1, group: 0, state: false) do
+	%>
+
+		<%= render partial: 'comments/feed', locals: {comments: @event.feed_comments} %>
+	<% end %>
+<section/>
