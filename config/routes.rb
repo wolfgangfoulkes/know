@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { registrations: 'registrations', :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :controllers => { :registrations => 'registrations', :confirmations => 'confirmations', :omniauth_callbacks => "omniauth_callbacks" }
+  devise_scope :user do
+    patch "/confirm" => "confirmations#confirm"
+  end
   resources :users, :only => [:show]
 
   resources :events, :only => [:show, :new, :create, :destroy, :edit, :update, :index] do
