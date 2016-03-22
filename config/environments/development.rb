@@ -39,4 +39,13 @@ Rails.application.configure do
 
   # test error redirects
   # config.consider_all_requests_local = false
+
+  # ----- devise email authentication
+  # heroku localhost address
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.action_mailer.delivery_method = :smtp
+  # default address for mailcatcher
+  config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
+  # -----
 end
